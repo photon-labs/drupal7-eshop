@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<users>
+	<user>
+		<username>Jackson</username>
+		<password>Jackson</password>
+	</user>
+	
+	<register>
+		<username>Jackson</username>
+		<email>Phresco@PhotonInfotech.net</email>
+		<password>Jackson</password>
+		<confirmpass>Jackson</confirmpass>
+	</register>
+	
+	<myaccount>
+		<currentpassword>Jackson</currentpassword>
+		<email>Phresco@PhotonInfotech.net</email>
+		<password>Jackson</password>
+		<confirmpass>Jackson</confirmpass>
+	</myaccount>
+	
+	<invalid>
+		<email>Phresco@Photon@Infotech.net</email>
+	</invalid>
+	
+	<search>
+		<audio>audio devices</audio>
+		<blackberry>Blackberry</blackberry>
+	</search>
+	
+	<userinfo>
+		<firstname>Watson</firstname>
+		<lastname>Jackson</lastname>
+		<company>Photon</company>
+		<streetaddress1>Denver street</streetaddress1>
+		<streetaddress2>Walltax Road</streetaddress2>
+		<city>New york</city>
+		<stateprovince>California</stateprovince>
+		<country>United States</country>
+		<postalcode>11225</postalcode>
+		<phonenumber>+121-04452 197362</phonenumber>
+		<ordercomments>Welcome to Drupal Shopping cart</ordercomments>
+	</userinfo>
+	
+</users>
