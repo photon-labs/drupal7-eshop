@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<environment>
+     <server>
+	    <protocol>http</protocol>
+        <host>localhost</host>
+		<port>80</port>
+        <context>drupal122</context>
+		<Browser>firefox</Browser>
+     </server>
+</environment>
