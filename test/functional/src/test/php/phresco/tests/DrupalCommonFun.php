@@ -1,22 +1,3 @@
-<?php /*
- * ###
- * PHR_DrupalEshop
- * %%
- * Copyright (C) 1999 - 2012 Photon Infotech Inc.
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ###
- */ ?>
 <?php
 /*Author by {phresco} QA Automation Team */
 
@@ -37,43 +18,56 @@ class DrupalCommonFun extends RequiredFunction
 
 	protected function setUp()
 	{
-	    $doc = new DOMDocument();
+	
+		$doc = new DOMDocument();
+		
 		$doc->load('test-classes/phresco/tests/phresco-env-config.xml');
-		$environment = $doc->getElementsByTagName("server");
-		foreach( $environment as $server )
-		{
-			$browsers = $server->getElementsByTagName("Browser");
-			$browser = $browsers->item(0)->nodeValue;
-		}
-		$this->webdriver = new WebDriver("localhost", 4444); 
-		$this->webdriver->connect($browser);
-		$screenShotsPath = getcwd()."//"."surefire-reports/screenshots";
+		
+		$environment = $doc->getElementsByTagName("Server");
+		
+		$config = $doc->getElementsByTagName("Browser");
+		$browser = $config->item(0)->nodeValue;
+		
+    	$this->webdriver = new WebDriver("localhost", 4444); 
+		
+       	$this->webdriver->connect($browser);
+		
+        $screenShotsPath = getcwd()."/surefire-reports/screenshots";
+		
 		if (!file_exists($screenShotsPath)) {
+		
 			mkdir($screenShotsPath);
+		
 		}
 	}
 	
 	public function Title()
-	{   
+	{ 
+	
 		$doc = new DOMDocument();
+		
 		$doc->load('test-classes/phresco/tests/phresco-env-config.xml');
-		$environment = $doc->getElementsByTagName("server");
-		foreach( $environment as $server )
+		
+		$environment = $doc->getElementsByTagName("Server");
+		
+		foreach( $environment as $Server )
 		{
-			$protocols= $server->getElementsByTagName("protocol");
+			$protocols= $Server->getElementsByTagName("protocol");
 			$protocol = $protocols->item(0)->nodeValue;
-			$hosts = $server->getElementsByTagName("host");
+			
+			$hosts = $Server->getElementsByTagName("host");
 			$host = $hosts->item(0)->nodeValue;
-			$ports = $server->getElementsByTagName("port");
+			
+			$ports = $Server->getElementsByTagName("port");
 			$port = $ports->item(0)->nodeValue;
-			$contexts = $server->getElementsByTagName("context");
+			
+			$contexts = $Server->getElementsByTagName("context");
 			$context = $contexts->item(0)->nodeValue;
-			$browsers = $server->getElementsByTagName("Browser");
-			$browser = $browsers->item(0)->nodeValue;
 		}
-		$serverUrl = $protocol .':'. '//' . $host . ':' . $port . '/'. $context . '/';
+    	
+        $serverUrl = $protocol . ':'.'//' . $host . ':' . $port . '/'. $context . '/';
+		
 		$this->webdriver->get($serverUrl);
-		sleep(2);
 	}
 	function DoLogin($testCaseName){
 	   if($testCaseName == null)
