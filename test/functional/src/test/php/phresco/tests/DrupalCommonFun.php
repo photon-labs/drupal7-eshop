@@ -78,7 +78,7 @@ class DrupalCommonFun extends RequiredFunction
 		$password;
 		$property = new DrupalCommonFun;
 		$doc = new DOMDocument();
-		$doc->load('test-classes/phresco/tests/UserInfo.xml');
+		$doc->load('test-classes/phresco/tests/drupalsetting.xml');
 		$users = $doc->getElementsByTagName("user");
 		foreach( $users as $user )
 		{
@@ -87,9 +87,8 @@ class DrupalCommonFun extends RequiredFunction
 			$passwords = $user->getElementsByTagName("password");
 			$password = $passwords->item(0)->nodeValue;
 		}
-		    sleep(10);
+		    
 		    $this->clickandLoad(DRU_LOGIN_TEXT);
-			sleep(10);
 			$this->type(DRU_LOGIN_UNAME,$name);
 		    $this->getElement(DRU_LOGIN_PASS,$testCaseName);
 		    $this->type(DRU_LOGIN_PASS,$password); 
@@ -102,7 +101,7 @@ class DrupalCommonFun extends RequiredFunction
 		 	$this->doCreateScreenShot($testCaseName);
 			
 		}
-		    sleep(5);
+		   
 	}
 
 	function DoLogout()
