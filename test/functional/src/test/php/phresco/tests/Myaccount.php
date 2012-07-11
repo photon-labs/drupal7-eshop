@@ -18,7 +18,7 @@ class Myaccount extends DrupalCommonFun
 		$confirmpassword;
 		$property = new DrupalCommonFun;
 		$doc = new DOMDocument();
-		$doc->load('test-classes/phresco/tests/drupalsetting.xml');
+		$doc->load('test-classes/phresco/tests/Drupal7Data.xml');
 
 		$users = $doc->getElementsByTagName("myaccount");
 		foreach( $users as $myaccount )
@@ -32,8 +32,10 @@ class Myaccount extends DrupalCommonFun
 			$confirmpass = $myaccount->getElementsByTagName("confirmpass");
 			$confirmpassword = $confirmpass->item(0)->nodeValue;
 		}
-		parent::DoLogin(__FUNCTION__);
+		    $this->DoLogin(__FUNCTION__);
+			$this->getElement(DRU_MYAC_EDIT,$testCaseName);
 		    $this->clickandLoad(DRU_MYAC_EDIT);
+			$this->getElement(DRU_MYAC_CURPASS,$testCaseName);
 			$this->type(DRU_MYAC_CURPASS,$currentpassword);
 		    $this->getElement(DRU_MYAC_MAIL,$testCaseName);
 			$this->clear(DRU_MYAC_MAIL,$testCaseName);
@@ -42,7 +44,10 @@ class Myaccount extends DrupalCommonFun
 			$this->type(DRU_MYAC_NEWPASS,$password);
 			$this->getElement(DRU_MYAC_CONFIRMPASS,$testCaseName);
 			$this->type(DRU_MYAC_CONFIRMPASS,$confirmpassword);
+			$this->getElement(DRU_MYAC_SAVE,$testCaseName);
+			sleep(5);
 		    $this->clickandLoad(DRU_MYAC_SAVE);		
+			$this->getElement(DRU_MYAC_COFIRM_MSG,$testCaseName);
 			
 		try {
 			$this->assertTrue($this->isTextPresent(DRU_MYAC_COFIRM_MSG));
@@ -52,7 +57,8 @@ class Myaccount extends DrupalCommonFun
 			
 		}
 		   
-		parent::DoLogout();
+		$this->DoLogout();
+		sleep(2);
 	}
 		
 

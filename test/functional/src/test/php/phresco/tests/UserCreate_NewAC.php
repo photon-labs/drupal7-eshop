@@ -20,7 +20,7 @@ class UserCreate_NewAC extends DrupalCommonFun
 		$confirmpassword;
 		$property = new DrupalCommonFun;
 		$doc = new DOMDocument();
-		$doc->load('test-classes/phresco/tests/drupalsetting.xml');
+		$doc->load('test-classes/phresco/tests/Drupal7Data.xml');
 		$users = $doc->getElementsByTagName("register");
 		foreach( $users as $register )
 		{

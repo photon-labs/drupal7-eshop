@@ -14,11 +14,13 @@ class CartContent_Delete extends DrupalCommonFun
 		  $testCaseName=__FUNCTION__;
 	       $this->getElement(DRU_MOBILE_PHONES,$testCaseName);
 		   $this->clickandLoad(DRU_MOBILE_PHONES);
+		   $this->getElement(DRU_PRODUCT_MOBILE,$testCaseName);
 		   $this->clickandLoad(DRU_PRODUCT_MOBILE);
 		   $this->getElement(DRU_VGAMES,$testCaseName);
 		   $this->clickandLoad(DRU_VGAMES);
+		   $this->getElement(DRU_PRODUCT_VGAME,$testCaseName);
 		   $this->clickandLoad(DRU_PRODUCT_VGAME);
-		 
+		 $this->getElement(DRU_REMOVE,$testCaseName);
 		   $this->clickandLoad(DRU_REMOVE);
 		   sleep(2);
 	    try {

@@ -11,6 +11,7 @@ class WelcomePage extends DrupalCommonFun
 	public function testWelcomePage()
 	{
 		parent::Title();
+		sleep(2);
 		
 	}	
 }
