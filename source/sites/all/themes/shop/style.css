@@ -753,7 +753,7 @@ width:320px;
 #user-login-form .form-item label {
     margin-left: 2px;
     padding: 0px;
-	float:left;
+	float:none;
     width: 75px;
 	text-align:left;
 	color:#CCCCCC;
@@ -978,4 +978,10 @@ border-color: #DE2A2A #DE2A2A #FFFFFF;
 /* To hide advanced search link */
 .search-advanced{
 display:none;
+}
+
+.password-strength{
+	float: right;
+    margin-top: 1.4em;
+    width: 15em;
 }
