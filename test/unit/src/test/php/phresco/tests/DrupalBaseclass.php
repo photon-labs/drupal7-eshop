@@ -74,7 +74,7 @@ define('DRUPAL_ROOT', $docRoot);
 class DrupalBaseclass extends PHPUnit_Framework_TestCase {
 	function connect(){
 		require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-		_drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+		drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 	}
   }
   
