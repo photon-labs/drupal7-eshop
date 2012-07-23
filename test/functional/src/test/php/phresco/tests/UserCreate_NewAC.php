@@ -35,6 +35,7 @@ class UserCreate_NewAC extends DrupalCommonFun
 		}
 		
 		    $this->clickandLoad(DRU_MENU_SIGNUP_LINK);
+			$this->getElement(DRU_SIGN_UNAME,$testCaseName);
 			$this->type(DRU_SIGN_UNAME,$name);
 		    $this->getElement(DRU_SIGN_EMAIL,$testCaseName);
 		    $this->type(DRU_SIGN_EMAIL,$email);
@@ -48,8 +49,10 @@ class UserCreate_NewAC extends DrupalCommonFun
 		    } 
 		catch (PHPUnit_Framework_AssertionFailedError $e) {
 		 	$this->doCreateScreenShot(__FUNCTION__);
-			
 		}	
+		$this->getElement(DRU_LOGOUT_TEXT,$testCaseName);
+		$this->DoLogout();
+		sleep(2);
 	}
 }
 ?>

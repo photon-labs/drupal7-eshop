@@ -56,7 +56,7 @@ class Myaccount extends DrupalCommonFun
 		 	$this->doCreateScreenShot(__FUNCTION__);
 			
 		}
-		   
+		$this->getElement(DRU_MYAC_COFIRM_MSG,$testCaseName);
 		$this->DoLogout();
 		sleep(2);
 	}

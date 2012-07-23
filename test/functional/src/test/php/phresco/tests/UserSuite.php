@@ -21,9 +21,9 @@ class UserSuite extends PHPUnit_Framework_TestSuite
 	$testSuite= new UserSuite();
 	$testSuite->setName('UserTestSuite');
     $testSuite->addTestSuite('WelcomePage');
-	$testSuite->addTestSuite('UserCreate_NewAC');
+ 	$testSuite->addTestSuite('UserCreate_NewAC');
 	$testSuite->addTestSuite('Myaccount');
-	$testSuite->addTestSuite('UserReq_NewPassword');
+	$testSuite->addTestSuite('UserReq_NewPassword'); 
 	
 	return $testSuite;
 	}

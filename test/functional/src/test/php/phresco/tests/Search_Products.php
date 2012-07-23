@@ -27,12 +27,11 @@ class Search_Products extends DrupalCommonFun
 		$this->type(DRU_SEARCH,$audio);
 		 $this->getElement(DRU_SEARCH_BUT,$testCaseName);		
         $this->clickandLoad(DRU_SEARCH_BUT);
-		sleep(5);
+		 $this->getElement(DRU_SEARCH_PRODUCT_INFO,$testCaseName);	
 		$this->clickandLoad(DRU_SEARCH_PRODUCT_INFO);
-		sleep(5);
-        $this->getElement(SEARCH_PRODUCT_RESULT,$testCaseName);		
+				
 	try {
-		$this->assertTrue($this->isTextPresent(SEARCH_PRODUCT_RESULT));
+		$this->assertFalse($this->isTextPresent(SEARCH_PRODUCT_RESULT));
 	    } 
 	catch (PHPUnit_Framework_AssertionFailedError $e) {
 		$this->doCreateScreenShot(__FUNCTION__);
