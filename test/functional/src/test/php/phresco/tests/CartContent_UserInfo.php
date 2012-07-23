@@ -1,22 +1,3 @@
-<?php /*
- * ###
- * PHR_DrupalEshop
- * %%
- * Copyright (C) 1999 - 2012 Photon Infotech Inc.
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ###
- */ ?>
 <?php
 /*Author by {phresco} QA Automation Team*/
 require_once 'DrupalCommonFun.php';
@@ -40,10 +21,10 @@ class CartContent_UserInfo extends DrupalCommonFun
 	   $OrderComment;
 	   
 		parent::Title();
-		 $testCaseName=__FUNCTION__;
+		$testCaseName=__FUNCTION__;
 		$property = new DrupalCommonFun;
 		$doc = new DOMDocument();
-		$doc->load('test-classes/phresco/tests/drupalsetting.xml');
+		$doc->load('test-classes/phresco/tests/Drupal7Data.xml');
 		$users = $doc->getElementsByTagName("userinfo");
 		foreach( $users as $userinfo )
 		{
@@ -70,20 +51,19 @@ class CartContent_UserInfo extends DrupalCommonFun
 			$OrderComments = $userinfo->getElementsByTagName("ordercomments");
 			$OrderComment = $OrderComments->item(0)->nodeValue;
 		}
-		    parent::DoLogin(__FUNCTION__);
-		
-		  $this->getElement(DRU_MOBILE_PHONES,$testCaseName);
+		   $this->DoLogin(__FUNCTION__);
+		    sleep(2);
+		   $this->getElement(DRU_MOBILE_PHONES,$testCaseName);
 		   $this->clickandLoad(DRU_MOBILE_PHONES);
+		   $this->getElement(DRU_PRODUCT_MOBILE,$testCaseName);
 		   $this->clickandLoad(DRU_PRODUCT_MOBILE);
 		   $this->getElement(DRU_VGAMES,$testCaseName);
 		   $this->clickandLoad(DRU_VGAMES);
+		   $this->getElement(DRU_PRODUCT_VGAME,$testCaseName);
 		   $this->clickandLoad(DRU_PRODUCT_VGAME);
-			
 		   $this->getElement(DRU_CHECK_OUT,$testCaseName);
 		   $this->clickandLoad(DRU_CHECK_OUT);
-		   
 		   $this->getElement(DRU_DELI_CFNAME,$testCaseName);
-		   
 		   		   $this->type(DRU_DELI_CFNAME,$Firstname);
 		   $this->getElement(DRU_DELI_CLNAME,$testCaseName);
 		   		   $this->type(DRU_DELI_CLNAME,$Lastname);
@@ -101,9 +81,9 @@ class CartContent_UserInfo extends DrupalCommonFun
 		   $this->getElement(DRU_COMMENTS,$testCaseName);
 		   		   $this->type(DRU_COMMENTS,DRU_TXT_COMMENTS);
 				   $this->getElement(DRU_REVIEW_ORDER,$testCaseName);
-				    $this->clickandLoad(DRU_REVIEW_ORDER);
-					$this->getElement(DRU_SUBMIT_ORDER,$testCaseName);
-					 $this->clickandLoad(DRU_SUBMIT_ORDER);
+				   $this->clickandLoad(DRU_REVIEW_ORDER);
+				   $this->getElement(DRU_SUBMIT_ORDER,$testCaseName);
+				   $this->clickandLoad(DRU_SUBMIT_ORDER);
 					 
 		try {
 			$this->assertTrue($this->isTextPresent(DRU_COMPLETE_CHECKOUT));
@@ -112,10 +92,8 @@ class CartContent_UserInfo extends DrupalCommonFun
 		 	$this->doCreateScreenShot(__FUNCTION__);
 			
 		}		 
-		 
-		   
-		
-		   parent::DoLogout();
+		   $this->DoLogout();
+		   sleep(2);
 	}
 }
 ?>

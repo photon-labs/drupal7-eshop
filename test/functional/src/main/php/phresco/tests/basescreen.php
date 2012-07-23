@@ -1,22 +1,3 @@
-<?php /*
- * ###
- * PHR_DrupalEshop
- * %%
- * Copyright (C) 1999 - 2012 Photon Infotech Inc.
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ###
- */ ?>
 <?php 
 /*
 
@@ -40,27 +21,29 @@ define ('DRU_MENU_CONTACTUS_LINK', "Contact Us");
 define ('DRU_MENU_ABOUTUS_LINK', "About Us");
 
 //Login
-define('DRU_LOGIN_TEXT',"Log In");
-define('DRU_LOGIN_UNAME',"//input[@id='edit-name']");
+//define('DRU_LOGIN_TEXT',"//div[2]/div/div/div/div/ul/li/a");
+define('DRU_LOGIN_TEXT',"//li[@class='dropdown']");
+define('DRU_LOGIN_UNAME',"//form[@id='user-login']/div/div/input");
 define('DRU_LOGIN_PASS',"//input[@id='edit-pass']");
-define('DRU_LOGIN_CLICK_BUT',"//input[@id='edit-submit']");
+define('DRU_LOGIN_CLICK_BUT',"//div[3]/input");
 
 //LogOut
 define('DRU_LOGOUT_TEXT',"Log out");
 
 //SignUp
-
-define ('DRU_SIGN_UNAME', "//input[@id='edit-name']");
-define ('DRU_SIGN_EMAIL', "//input[@id='edit-mail']");
-define ('DRU_SIGN_PASS1', "//input[@id='edit-pass-pass1']");
-define ('DRU_SIGN_PASS2', "//input[@id='edit-pass-pass2']");
-define ('DRU_SIGN_SUBMIT', "//input[@id='edit-submit']");
+                            
+define ('DRU_SIGN_UNAME', "//div[3]/div/div/form/div/div/div/input");
+define ('DRU_SIGN_EMAIL', "//div[2]/input");
+define ('DRU_SIGN_PASS1', "//div[3]/div/input");
+define ('DRU_SIGN_PASS2', "//div[3]/div[2]/input");
+define ('DRU_SIGN_SUBMIT', "//form/div/div[2]/input");
 define ('DRU_SIGN_TXTMSG', "Thank you for applying for an account");
 
 define ('DRU_SIGN_REQ_PASS', "//a[contains(text(),'Request new password')]");
 define ('DRU_SIGN_MAIL', "//input[@id='edit-name']");
 define ('DRU_SIGN_REQ_PASS_MAIL',"//input[@id='edit-submit']");
 define ('DRU_SIGN_TXT_SUC', "Registration successful. You are now logged in.");
+define ('DRU_SIGN_REQ_NEW_PASSWORD_TXT', "Unable to send e-mail. Contact the site administrator if the problem persists.");
 
 //Home
 define ('DRU_HOME_NEXT', "//li[8]/a");
@@ -84,7 +67,7 @@ define ('DRU_MYAC_CURPASS', "//input[@id='edit-current-pass']");
 define ('DRU_MYAC_MAIL', "//input[@id='edit-mail']");
 define ('DRU_MYAC_NEWPASS', "//input[@id='edit-pass-pass1']");
 define ('DRU_MYAC_CONFIRMPASS', "//input[@id='edit-pass-pass2']");
-define ('DRU_MYAC_SAVE', "//input[@id='edit-submit']");
+define ('DRU_MYAC_SAVE', "//div[@class='form-actions form-wrapper']");
 define ('DRU_MYAC_COFIRM_MSG', "The changes have been saved.");
 
 
@@ -95,8 +78,8 @@ define ('DRU_TEXT_PRESENT', "About Us");
 define ('DRU_SEARCH', "//input[@id='edit-keys']");
 define ('DRU_SEARCH_DESK', "audio devices");
 define ('DRU_SEARCH_DESK_VAL', "//li[3]/h3/a");
-define ('DRU_SEARCH_PRODUCT_INFO',"//a[@href='http://localhost/drupal/node/40']");
-define ('SEARCH_PRODUCT_RESULT',"AKG C3000 Studio Microphone");
+define ('DRU_SEARCH_PRODUCT_INFO',"AKG C3000 Studio Microphone");
+define ('SEARCH_PRODUCT_RESULT',"Product Highlights Cardioid Polar Pattern Wide Frequency Response -10dB Pad Switch Low Frequency Roll-Off Switch Internal Shock Mounting");
 
 
 /*define ('DRU_SEARCH_LAP', "Blackberry");
@@ -142,6 +125,7 @@ define ('DRU_PRODUCT_COMPUTER', "//input[@id='edit-submit-20']");
 define ('DRU_PRODUCT_TABLET', "//input[@id='edit-submit-62']");
 define ('DRU_PRODUCT_MOBILE', "//input[@id='edit-submit-30']");
 define ('DRU_PRODUCT_VGAME', "//input[@id='edit-submit-82']");
+define ('DRU_VGAMES_LINK', "//a[contains(text(),'Video Games')]");
 
 
 
@@ -168,13 +152,7 @@ define ('DRU_COMMENTS', "//textarea[@id='edit-panes-comments-comments']");
 define ('DRU_TXT_COMMENTS', "Welcome To DRUPAL Eshop Application");
 
 define ('DRU_REVIEW_ORDER', "//input[@id='edit-continue']");
-define ('DRU_SUBMIT_ORDER', "//input[@id='edit-submit']");
+define ('DRU_SUBMIT_ORDER', "//div/div/input[2]");
 
 define ('DRU_COMPLETE_CHECKOUT', "Your order is complete!");
-
-
-
-
-
-
 ?>
