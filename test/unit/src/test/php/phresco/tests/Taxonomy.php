@@ -15,7 +15,7 @@ class Taxonomy extends DrupalBaseclass {
 	function testCountTaxonomy(){
 		$this->connect();
 		$vid = array("vid" => 3);
-		$taxonomies = taxonomy_term_load_multiple(array() , $vid);
+		@$taxonomies = taxonomy_term_load_multiple(array() , $vid);
 		$this->assertEquals(count($taxonomies),10);
 	}
 	
