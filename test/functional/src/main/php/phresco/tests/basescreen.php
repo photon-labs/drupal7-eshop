@@ -21,7 +21,8 @@ define ('DRU_MENU_CONTACTUS_LINK', "Contact Us");
 define ('DRU_MENU_ABOUTUS_LINK', "About Us");
 
 //Login
-define('DRU_LOGIN_TEXT',"//div[2]/div/div/div/div/ul/li/a");
+//define('DRU_LOGIN_TEXT',"//div[2]/div/div/div/div/ul/li/a");
+define('DRU_LOGIN_TEXT',"//li[@class='dropdown']");
 define('DRU_LOGIN_UNAME',"//form[@id='user-login']/div/div/input");
 define('DRU_LOGIN_PASS',"//input[@id='edit-pass']");
 define('DRU_LOGIN_CLICK_BUT',"//div[3]/input");
@@ -30,19 +31,19 @@ define('DRU_LOGIN_CLICK_BUT',"//div[3]/input");
 define('DRU_LOGOUT_TEXT',"Log out");
 
 //SignUp
-
-define ('DRU_SIGN_UNAME', "//div[3]/div/div/form/div/div/input");
+                            
+define ('DRU_SIGN_UNAME', "//div[3]/div/div/form/div/div/div/input");
 define ('DRU_SIGN_EMAIL', "//div[2]/input");
 define ('DRU_SIGN_PASS1', "//div[3]/div/input");
 define ('DRU_SIGN_PASS2', "//div[3]/div[2]/input");
-define ('DRU_SIGN_SUBMIT', "//div[4]/input");
+define ('DRU_SIGN_SUBMIT', "//form/div/div[2]/input");
 define ('DRU_SIGN_TXTMSG', "Thank you for applying for an account");
 
 define ('DRU_SIGN_REQ_PASS', "//a[contains(text(),'Request new password')]");
 define ('DRU_SIGN_MAIL', "//input[@id='edit-name']");
 define ('DRU_SIGN_REQ_PASS_MAIL',"//input[@id='edit-submit']");
 define ('DRU_SIGN_TXT_SUC', "Registration successful. You are now logged in.");
-define ('DRU_SIGN_REQ_NEW_PASSWORD_TXT', "Further instructions have been sent to your e-mail address.");
+define ('DRU_SIGN_REQ_NEW_PASSWORD_TXT', "Unable to send e-mail. Contact the site administrator if the problem persists.");
 
 //Home
 define ('DRU_HOME_NEXT', "//li[8]/a");
@@ -66,7 +67,7 @@ define ('DRU_MYAC_CURPASS', "//input[@id='edit-current-pass']");
 define ('DRU_MYAC_MAIL', "//input[@id='edit-mail']");
 define ('DRU_MYAC_NEWPASS', "//input[@id='edit-pass-pass1']");
 define ('DRU_MYAC_CONFIRMPASS', "//input[@id='edit-pass-pass2']");
-define ('DRU_MYAC_SAVE', "//div[@id='edit-actions']/input");
+define ('DRU_MYAC_SAVE', "//div[@class='form-actions form-wrapper']");
 define ('DRU_MYAC_COFIRM_MSG', "The changes have been saved.");
 
 
@@ -77,8 +78,8 @@ define ('DRU_TEXT_PRESENT', "About Us");
 define ('DRU_SEARCH', "//input[@id='edit-keys']");
 define ('DRU_SEARCH_DESK', "audio devices");
 define ('DRU_SEARCH_DESK_VAL', "//li[3]/h3/a");
-define ('DRU_SEARCH_PRODUCT_INFO',"//div[@id='main_content']/div[3]/div/div/ol/li[3]/h3/a");
-define ('SEARCH_PRODUCT_RESULT',"AKG C3000 Studio Microphone");
+define ('DRU_SEARCH_PRODUCT_INFO',"AKG C3000 Studio Microphone");
+define ('SEARCH_PRODUCT_RESULT',"Product Highlights Cardioid Polar Pattern Wide Frequency Response -10dB Pad Switch Low Frequency Roll-Off Switch Internal Shock Mounting");
 
 
 /*define ('DRU_SEARCH_LAP', "Blackberry");
