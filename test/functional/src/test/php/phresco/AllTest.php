@@ -23,7 +23,7 @@ class AllTest extends PHPUnit_Framework_TestSuite
 		$suite->setName('DrupalAllTestSuite');
  		$suite->addTestSuite(UserSuite::suite());
 		$suite->addTestSuite(CommonSuite::suite());
-		$suite->addTestSuite(CartAll::suite());
+		$suite->addTestSuite(CartAll::suite()); 
 		return $suite;
     }
  protected function tearDown()
