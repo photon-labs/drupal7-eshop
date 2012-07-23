@@ -5,7 +5,7 @@
 	<artifactId>Phresco</artifactId>
 	<packaging>pom</packaging>
 	<name>Load testing for Drupal</name>
-	<version>1.2.0.6003-SNAPSHOT</version>
+	<version>1.2.0.7004-SNAPSHOT</version>
 	
 	<build>
 		<plugins>
