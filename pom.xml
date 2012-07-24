@@ -77,7 +77,6 @@
     <sonar.phpPmd.skip xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</sonar.phpPmd.skip>
     <sonar.dynamicAnalysis xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.dynamicAnalysis>
     <sonar.phpPmd.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.phpPmd.shouldRun>
-	<sonar.phpCodesniffer.skip>true</sonar.phpCodesniffer.skip> 
     <sonar.phpCodesniffer.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.phpCodesniffer.shouldRun>
     <sonar.phpDepend.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.phpDepend.shouldRun>
     <sonar.phpUnit.coverage.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</sonar.phpUnit.coverage.shouldRun>
@@ -86,7 +85,7 @@
     <sonar.phpcpd.excludes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">source/sql</sonar.phpcpd.excludes>
     <sonar.phpcpd.excludes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">source/public_html</sonar.phpcpd.excludes>
     <sonar.phase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">validate</sonar.phase>
-    <sonar.exclusions>**/chaos tool suite/**,**/entity api/**,**/rules/**,**/taxonomy manager/**,**/taxonomy subterms /**,**/ubercart/**,**/views/**</sonar.exclusions>
+	<sonar.phpCodesniffer.standardArgument>Drupal</sonar.phpCodesniffer.standardArgument>
   </properties>
 </project>
 
