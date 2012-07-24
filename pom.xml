@@ -71,6 +71,7 @@
       <type>zip</type>
     </dependency>
   </dependencies>
+  
   <properties>
     <drupal.version xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">7.8</drupal.version>
     <sonar.language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">php</sonar.language>
@@ -86,7 +87,7 @@
     <sonar.phpcpd.excludes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">source/sql</sonar.phpcpd.excludes>
     <sonar.phpcpd.excludes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">source/public_html</sonar.phpcpd.excludes>
     <sonar.phase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">validate</sonar.phase>
-    <sonar.exclusions>**/chaos tool suite/**,**/entity api/**,**/rules/**,**/taxonomy manager/**,**/taxonomy subterms /**,**/ubercart/**,**/views/**</sonar.exclusions>
   </properties>
+  
 </project>
 
