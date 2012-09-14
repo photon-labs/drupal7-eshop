@@ -28,6 +28,7 @@
     <outputDirectory>${project.basedir}/lib/driver/</outputDirectory>
 										</artifactItem>
 									</artifactItems>
+<<<<<<< HEAD
                         </configuration>
                     </execution>
                 </executions>
@@ -243,4 +244,89 @@
         <sonar.phpCodesniffer.timeout>100</sonar.phpCodesniffer.timeout>
         <sonar.phpCodesniffer.skip xmlns:ns2="http://maven.apache.org/POM/4.0.0" xmlns="">true</sonar.phpCodesniffer.skip>
     </properties>
+=======
+								</configuration>
+							</execution>
+						</executions>
+			    </plugin> 				
+				<plugin>
+					<groupId>com.photon.phresco.plugins</groupId>
+					<artifactId>drupal-maven-plugin</artifactId>
+					<version>2.0.0.14001-SNAPSHOT-SNAPSHOT</version>
+						<executions>
+							<execution>
+							<phase>validate</phase>
+								<goals>
+									<goal>startwebdriver</goal>
+								</goals>
+							</execution>
+						</executions> 		
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<!-- <id>selenium-webdriver-Dir</id> -->
+							<configuration>
+								<tasks>
+									<mkdir dir="target/php-deps/license"/>
+								</tasks>
+							</configuration>
+							<phase>validate</phase>
+							 <goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>		
+			 	<plugin>
+					<groupId>org.phpmaven</groupId>
+					<artifactId>maven-php-plugin</artifactId>
+					<version>2.0.0.14001-SNAPSHOT-SNAPSHOT</version>
+					<extensions>true</extensions>
+					<executions>
+						<execution>							
+							<phase>test</phase>
+						</execution>
+					</executions>
+					<configuration>
+						<resultFolder>target/surefire-reports</resultFolder>
+					</configuration>						
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>selenium-maven-plugin</artifactId>
+					<version>2.3</version>
+						<executions>       
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>stop-server</goal>
+								</goals>
+							</execution>
+						</executions>
+				</plugin>
+			</plugins>
+		</build>
+		
+	 <properties>
+		<drupal.version xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">7.8</drupal.version>
+		<sonar.language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">php</sonar.language>
+		<sonar.phpPmd.skip xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</sonar.phpPmd.skip>
+		<sonar.dynamicAnalysis xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.dynamicAnalysis>
+		<sonar.phpPmd.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.phpPmd.shouldRun>
+		<sonar.phpCodesniffer.skip>true</sonar.phpCodesniffer.skip> 
+		<sonar.phpCodesniffer.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.phpCodesniffer.shouldRun>
+		<sonar.phpDepend.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.phpDepend.shouldRun>
+		<sonar.phpUnit.coverage.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</sonar.phpUnit.coverage.shouldRun>
+		<sonar.phpUnit.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</sonar.phpUnit.shouldRun>
+		<sonar.phpcpd.shouldRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</sonar.phpcpd.shouldRun>
+		<sonar.phpcpd.excludes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">source/sql</sonar.phpcpd.excludes>
+		<sonar.phpcpd.excludes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">source/public_html</sonar.phpcpd.excludes>
+		<sonar.phase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">validate</sonar.phase>
+  </properties>
+		
+>>>>>>> e70378cb3d43d63ba6b82e3e47b3b442c5768b43
 </project>

@@ -14,8 +14,8 @@ if ( !isset( $_SERVER['REMOTE_ADDR'] ) ) {
 if ( !isset( $GLOBALS['language'] ) ) {
   $GLOBALS['language']= 'en';
 }
-	$cwd = explode("test",getcwd());
-	$fileContents = file_get_contents($cwd[0]."source/sites/default/config/phresco-env-config.xml");
+	chdir("../../");
+	$fileContents = file_get_contents("source/sites/default/config/phresco-env-config.xml");
 	$file = getDecryptedString($fileContents);
 	$document = new DOMDocument();
 	$document->loadXML($file);
@@ -74,7 +74,7 @@ define('DRUPAL_ROOT', $docRoot);
 class DrupalBaseclass extends PHPUnit_Framework_TestCase {
 	function connect(){
 		require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-		_drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+		drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 	}
   }
   
