@@ -5,7 +5,6 @@ Author by {phresco} QA Automation Team
 
 */
 require_once 'DrupalCommonFun.php';
-require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class Manufacturers extends DrupalCommonFun
 {
