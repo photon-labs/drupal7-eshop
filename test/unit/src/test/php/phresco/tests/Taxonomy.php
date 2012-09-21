@@ -26,14 +26,6 @@ class Taxonomy extends DrupalBaseclass {
 		$this->assertEquals(count($taxonomies),31);
 	}
 	
-	/*function testSample(){
-		drupal_register_shutdown_function('devel_shutdown');
-		$this->connect();
-		$vid = array("vid" => 3);
-		$taxonomies = taxonomy_term_load_multiple(array() , $vid);
-		$this->assertEquals(count($term),2);
-	}*/
-	
 	
 }
 ?>
