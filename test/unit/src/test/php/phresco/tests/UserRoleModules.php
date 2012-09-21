@@ -8,6 +8,7 @@ Author by {phresco} QA Automation Team
 require 'tests/UserRole.php';
 
 class UserRoleModules extends PHPUnit_Framework_TestSuite {
+	protected $backupGlobals = FALSE;
 
 	protected function setUp() {
 	}

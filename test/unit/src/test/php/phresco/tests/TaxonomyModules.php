@@ -9,6 +9,7 @@ require 'tests/Taxonomy.php';
 
 
 class TaxonomyModules extends PHPUnit_Framework_TestSuite {
+	protected $backupGlobals = FALSE;
 
 	protected function setUp() {
 	}
