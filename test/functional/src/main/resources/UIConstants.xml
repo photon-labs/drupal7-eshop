@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<environment>
+<phresco>
+<drupalblog>
+     	
+    
+    	<signuplink>//a[contains(text(),'Sign Up')]</signuplink>		
+ 		<username>//input[@id='edit-name']</username>
+ 		<emailfield>//input[@id='edit-mail']</emailfield>		
+		<password>//input[@id='edit-pass-pass1']</password>	
+		<passwordlogin>//div[2]/input</passwordlogin>	
+		<confirmpassword>//input[@id='edit-pass-pass2']</confirmpassword>
+		<buttonclick>//input[@id='edit-submit']</buttonclick>	
+		<passwordlogin>//input[@id='edit-pass']</passwordlogin>	
+		<myaccount>//a[contains(text(),'My Account')]</myaccount>				
+		<logoff>//div[2]/div/div/div/div/ul/li/a</logoff>
+		<login>//a[contains(text(),'Log In')]</login>
+		<rlink>//a[contains(text(),'Request new password')]</rlink>
+		<etextfield>//input[@id='edit-name']</etextfield>
+		<rbuttonclick>//input[@id='edit-submit']</rbuttonclick>
+		<home>//div[2]/div/ul/li/a</home>
+		
+		
+ 
+ 		<accessories>//a[contains(text(),'Accessories')]</accessories>
+ 		<addtocart1>//div[19]/div[2]/div[2]/div[4]/div/form/div/div/input</addtocart1>
+ 		<quantity1>//td[3]/div/input</quantity1>
+ 		<updatecart1>(//input[@id='edit-update'])[2]</updatecart1>
+ 		<audiodevice>//a[contains(@href, '/drupalphresco/taxonomy/term/16')]</audiodevice>
+ 		<addtocart2>//input[@id='edit-submit-31']</addtocart2>
+ 		<updatecart2>//div[2]/input</updatecart2>
+ 		<cameras>//a[contains(@href, '/drupalphresco/taxonomy/term/17')]</cameras>
+ 		<addtocart3>//input[@id='edit-submit-41']</addtocart3>
+ 		<updatecart3>//div[2]/input</updatecart3>
+ 		<computers>//a[contains(@href, '/drupalphresco/taxonomy/term/14')]</computers>
+ 		<addtocart4>//div[21]/div[2]/div[2]/div[4]/div/form/div/div/input</addtocart4>
+ 		<updatecart4>//div[2]/input</updatecart4> 		
+ 		<mobilephones>//a[contains(@href, '/drupalphresco/taxonomy/term/15')]</mobilephones>
+ 		<addtocart5>//div[21]/div[2]/div[2]/div[4]/div/form/div/div/input</addtocart5>
+ 		<remove>//td[5]/input</remove>
+ 		<remove1>//td[5]/input</remove1>
+ 		<updatecart5>//div[2]/input</updatecart5>		
+ 		<checkout>//input[@id='edit-checkout']</checkout>
+ 		<firstname>//input[@id='edit-panes-delivery-delivery-first-name']</firstname>
+ 		<lastname>//input[@id='edit-panes-delivery-delivery-last-name']</lastname>
+ 		<company>//input[@id='edit-panes-delivery-delivery-company']</company>
+ 		<streetaddress1>//input[@id='edit-panes-delivery-delivery-street1']</streetaddress1>
+ 		<streetaddress2>//input[@id='edit-panes-delivery-delivery-street2']</streetaddress2>
+ 		<city>//input[@id='edit-panes-delivery-delivery-city']</city> 				
+ 		<postelcode>//input[@id='edit-panes-delivery-delivery-postal-code']</postelcode>
+ 		<billingaddcheck>//fieldset[4]/div/div[2]/input</billingaddcheck>
+ 		<ordercomm>//textarea</ordercomm>
+ 		<revieworder>//div/div/input[2]</revieworder>		
+ 		<checkoutsubmit>//input[@id='edit-submit']</checkoutsubmit> 		
+ 		<next>//li[8]/a</next>
+ 		<next1>//li[10]/a</next1>
+ 		<select>//tr[5]/td[2]/div[5]/div/form/div/div/input</select>
+ 		<updateselect>//div[2]/input</updateselect>
+ 		<shopping>//a[contains(@href, '/drupalphresco/cart')]</shopping>
+ 		<removecart>//td[5]/input</removecart>
+ 		
+ 		
+ 		<contactus>//div[@id='menu_tab']/div[2]/div/ul/li[6]/a</contactus>   
+	    <aboutus>//li[7]/a</aboutus>
+	    <searchproducts>//div[@id='edit-basic']/div/input</searchproducts>
+	    <search>//form/div/div/input</search>
+	    <movieandmusics>//li[6]/div/span/a</movieandmusics>
+	    <mp3player>//div[@id='sidebar-first']/div/div[2]/div/ul/li[7]/div/span/a</mp3player>
+	    <addtocart2>//div[@id='edit-actions--6']/input</addtocart2>
+	    <tablets>//div[@id='sidebar-first']/div/div[2]/div/ul/li[8]/div/span/a</tablets>
+	    <television>//div[@id='sidebar-first']/div/div[2]/div/ul/li[9]/div/span/a</television>
+	    <videogames>//div[@id='sidebar-first']/div/div[2]/div/ul/li[10]/div/span/a</videogames>
+	    <addtocart6>//input[@id='edit-submit-63']</addtocart6>
+	    <addtocart7>//input[@id='edit-submit-92']</addtocart7>
+	    <addtocart8>//input[@id='edit-submit-53']</addtocart8>
+	    <addtocart9>//input[@id='edit-submit-10']</addtocart9>
+	    <addtocart10>//input[@id='edit-submit-73']</addtocart10>
+	   
+
+ 		
+ 		
+ 		
+ 		
+
+</drupalblog>
+</phresco>
+</environment>
