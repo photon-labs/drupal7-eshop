@@ -15,6 +15,6 @@
         <remoteDeployment>false</remoteDeployment>
         <protocol>http</protocol>
         <host>localhost</host>
-        <resolution></resolution>
+        <Resolution></Resolution>
     </Server>
 </environment>
