@@ -154,32 +154,6 @@ public class BaseScreen {
 
 	}
 	
-	public  void windowResize()
-	{
-		phrsc = new PhrescoUiConstants();
-		String resolution = phrsc.RESOLUTION;		
-		if(resolution!=null)
-		{
-		String[] tokens = resolution.split("x");
-		String resolutionX=tokens[0];
-		String resolutionY=tokens[1];		
-		int x= Integer.parseInt(resolutionX);
-		int y= Integer.parseInt(resolutionY);
-		Dimension screenResolution = new Dimension(x,y);
-		driver.manage().window().setSize(screenResolution);
-		}
-		else{
-			driver.manage().window().maximize();
-		}
-	}
-
-	/*
-	 * public static void windowMaximizeFirefox() {
-	 * driver.manage().window().setPosition(new Point(0, 0)); java.awt.Dimension
-	 * screenSize = java.awt.Toolkit.getDefaultToolkit() .getScreenSize();
-	 * Dimension dim = new Dimension((int) screenSize.getWidth(), (int)
-	 * screenSize.getHeight()); driver.manage().window().setSize(dim); }
-	 */
 
 	public void closeBrowser() {
 		log.info("-------------***BROWSER CLOSING***--------------");
