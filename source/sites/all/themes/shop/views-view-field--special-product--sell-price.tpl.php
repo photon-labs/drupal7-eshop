@@ -1,5 +1,4 @@
 <?php /*
-/*
  * PHR_DrupalEshop
  *
  * Copyright (C) 1999-2013 Photon Infotech Inc.
@@ -15,9 +14,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
- */ ?>
-<?php
+ */ ?><?php
  /**
   * This template is used to print a single field in a view. It is not
   * actually used in default Views, as this is registered as a theme

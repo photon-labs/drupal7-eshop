@@ -1,6 +1,5 @@
 <?php /*
-/*
- * PHR_DrupalEshop
+* PHR_DrupalEshop
  *
  * Copyright (C) 1999-2013 Photon Infotech Inc.
  *
@@ -16,9 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-*/ ?>
-<?php
-	if(DRUPAL_ROOT){
+<?php	if(DRUPAL_ROOT){
 		$cwd = DRUPAL_ROOT; 
 	}else { 
 		$cwd = getcwd(); 
