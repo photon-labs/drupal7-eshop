@@ -19,39 +19,79 @@ package com.photon.phresco.uiconstants;
 
 import java.lang.reflect.Field;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class UserInfoConstants {
-	
-	
-	private ReadXMLFile readXml;	
-	
-	public String USERNAME_VALUE="username";
-	public String EMAIL_VALUE="emailvalue";
-	public String PASSWORD_VALUE ="password";
-	public String CONFIRM_PASSWORD ="cpassWord";
-	public String PASSWORDLOGIN_VALUE="password";
+
+	private Log log = LogFactory.getLog("Drupal UserInfoConstants");
+
+	public String userNameValue = "username";
+	public String emailValue = "emailvalue";
+	public String passwordValue = "password";
+	public String confirmPassWord = "cpassWord";
+	public String passwordLoginValue = "password";
 
 	/**
-	 * Reading the UserInfoConstants xml files through UserInfoConstants() Constructor 
+	 * Reading the UserInfoConstants xml files through UserInfoConstants()
+	 * Constructor
 	 */
-    public UserInfoConstants() {
+	public UserInfoConstants() {
 		try {
-			readXml = new ReadXMLFile();
+			ReadXMLFile readXml = new ReadXMLFile();
 			readXml.loadUserInfoConstants();
-			Field[] arrayOfField1 = super.getClass().getFields();
-			Field[] arrayOfField2 = arrayOfField1;
-			int i = arrayOfField2.length;
-			for (int j = 0; j < i; ++j) {
-				Field localField = arrayOfField2[j];
-				Object localObject = localField.get(this);
-				if (localObject instanceof String)
-					localField
-							.set(this, readXml.getValue((String) localObject));
-
+			Field[] arrayOfField = this.getClass().getDeclaredFields();
+			for (Field field : arrayOfField) {
+				field.setAccessible(true);
+				Object localObject = field.get(this);
+				if (localObject instanceof String) {
+					field.set(this, readXml.getValue((String) localObject));
+				}
 			}
 		} catch (Exception localException) {
-			throw new RuntimeException("Loading "
-					+ super.getClass().getSimpleName() + " failed",
-					localException);
+			log.info("Exception in Drupal UserInfoConstants"
+					+ localException.getMessage());
 		}
 	}
+
+	public String getUserNameValue() {
+		return userNameValue;
+	}
+
+	public void setUserNameValue(String userNameValue) {
+		this.userNameValue = userNameValue;
+	}
+
+	public String getEmailValue() {
+		return emailValue;
+	}
+
+	public void setEmailValue(String emailValue) {
+		this.emailValue = emailValue;
+	}
+
+	public String getPasswordValue() {
+		return passwordValue;
+	}
+
+	public void setPasswordValue(String passwordValue) {
+		this.passwordValue = passwordValue;
+	}
+
+	public String getConfirmPassWord() {
+		return confirmPassWord;
+	}
+
+	public void setConfirmPassWord(String confirmPassWord) {
+		this.confirmPassWord = confirmPassWord;
+	}
+
+	public String getPasswordLoginValue() {
+		return passwordLoginValue;
+	}
+
+	public void setPasswordLoginValue(String passwordLoginValue) {
+		this.passwordLoginValue = passwordLoginValue;
+	}
+
 }

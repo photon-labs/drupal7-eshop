@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    PHR_DrupalEshop
+
+    Copyright (C) 1999-2013 Photon Infotech Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<environment>
+<phresco>
+      <drupalblog>  	
+		   	<textregistration>Registration successful. You are now logged in.</textregistration>
+		   	<textrequestnewpwd>Further instructions have been sent to your e-mail address.</textrequestnewpwd>
+		   	<textlogin>Welcome</textlogin>	
+		   	<textaccessories>Bracket1 Accessory Rain Cover added to your shopping cart.</textaccessories>
+		   	<textupdate>Your cart has been updated.</textupdate>		
+		 	<quantity1value>2</quantity1value>
+		 	<textaudiodevices>Vocal Microphone Accessory Bundle - Deluxe added to your shopping cart.</textaudiodevices>
+		 	<textcameras>Canon EOS 1D Mark IV SLR Digital Camera (Body Only) added to your shopping cart.</textcameras>
+		 	<textcomputers>Apple 11.6"" MacBook Air Notebook Computer added to your shopping cart.</textcomputers>
+		 	<textmobilephones>Apple iPhone 4 added to your shopping cart.</textmobilephones>
+			<textremove>removed from your shopping cart.</textremove>	
+			<textmovies>Sony Vegas Movie Studio HD Platinum Production Suite added to your shopping cart.</textmovies>
+			<textmp3>Califone 8100 MP3 Player/Recorder with 512MB added to your shopping cart.</textmp3>
+			<texttablets>Acer 16GB Iconia Tab A500 10.1"" Multi-Touch Screen Tablet added to your shopping cart.</texttablets>
+			<texttelevision>LG Electronics 50PZ950 50"" 1080p 3D Plasma Smart TV added to your shopping cart.</texttelevision>
+			<textvideogames>Call of Duty: Modern Warfare 3 added to your shopping cart.</textvideogames>
+			<textorder>Your order is complete!</textorder>
+			<texthomeselect>Apple 11.6"" MacBook Air Notebook Computer added to your shopping cart.</texthomeselect>
+			<textcontactus>Chennai</textcontactus>
+			<textcontactus1>Bangalore</textcontactus1>				 
+		 	
+		 	
+		    <searchproducts>ipad</searchproducts>
+		    <aboutusvalue>OUR PHRESCO DRUPAL ESHOP MISSION</aboutusvalue>    
+	</drupalblog>
+</phresco>
+</environment>

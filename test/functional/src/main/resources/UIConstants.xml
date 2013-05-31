@@ -27,7 +27,7 @@
  		<username>//input[@id='edit-name']</username>
  		<emailfield>//input[@id='edit-mail']</emailfield>		
 		<password>//input[@id='edit-pass-pass1']</password>	
-		<passwordlogin>//div[2]/input</passwordlogin>	
+		<passwordlogin>//input[@id='edit-pass']</passwordlogin>	
 		<confirmpassword>//input[@id='edit-pass-pass2']</confirmpassword>
 		<buttonclick>//input[@id='edit-submit']</buttonclick>	
 		<passwordlogin>//input[@id='edit-pass']</passwordlogin>	
@@ -37,7 +37,7 @@
 		<rlink>//a[contains(text(),'Request new password')]</rlink>
 		<etextfield>//input[@id='edit-name']</etextfield>
 		<rbuttonclick>//input[@id='edit-submit']</rbuttonclick>
-		<home>//div[2]/div/ul/li/a</home>
+		<home>//a[contains(text(),'Specials')]</home>
 		
 		
  
@@ -71,14 +71,16 @@
  		<ordercomm>//textarea</ordercomm>
  		<revieworder>//div/div/input[2]</revieworder>		
  		<checkoutsubmit>//input[@id='edit-submit']</checkoutsubmit> 		
- 		<next>//li[8]/a</next>
+ 		<next>//div[2]/ul/li[3]/a</next>
  		<next1>//li[10]/a</next1>
  		<select>//tr[5]/td[2]/div[5]/div/form/div/div/input</select>
  		<updateselect>//div[2]/input</updateselect>
- 		<shopping>//a[contains(@href, '/drupalphresco/cart')]</shopping>
+ 		<shopping>//a[contains(text(),'Shopping Cart')]</shopping>
  		<removecart>//td[5]/input</removecart>
  		
- 		
+ 		<billInfoCheckBox>//input[@id='edit-panes-billing-copy-address']</billInfoCheckBox>
+ 		<select_State>//select[@id='edit-panes-delivery-delivery-zone']</select_State>
+ 		<checkOut>//input[@id='edit-checkout']</checkOut>
  		<contactus>//div[@id='menu_tab']/div[2]/div/ul/li[6]/a</contactus>   
 	    <aboutus>//li[7]/a</aboutus>
 	    <searchproducts>//div[@id='edit-basic']/div/input</searchproducts>

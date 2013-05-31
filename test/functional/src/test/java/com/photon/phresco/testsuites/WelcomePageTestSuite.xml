@@ -23,6 +23,7 @@
 
 	<test name="VerifyWelcomePageOnFirefox" junit="false"
 		preserve-order="true">
+		<parameter name="Drupal7DataXml" value="/DrupalData.xml" />
 		<parameter name="browser" value="firefox" />
 		<parameter name="platform" value="WINDOWS" />
 		<classes>
@@ -30,14 +31,15 @@
 		</classes>
 	</test>
 
- <test name="VerifyWelcomePageOnGoogleChrome" junit="false"
+	 <test name="VerifyWelcomePageOnGoogleChrome" junit="false"
 		preserve-order="true">
+		<parameter name="Drupal7DataXml" value="/DrupalData.xml" />
 		<parameter name="browser" value="googlechrome" />
 		<parameter name="platform" value="WINDOWS" />
 		<classes>
 			<class name="com.photon.phresco.testcases.WelcomePageTestCase" />
 		</classes>
-	</test> 
+	 </test> 
  </suite>
  
 

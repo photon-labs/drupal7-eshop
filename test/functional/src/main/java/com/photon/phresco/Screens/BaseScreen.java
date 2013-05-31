@@ -18,8 +18,6 @@
 package com.photon.phresco.Screens;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -32,16 +30,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 //import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -49,59 +44,59 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.google.common.base.Function;
+import com.photon.phresco.model.DrupalEshops.DrupalEshopData;
 import com.photon.phresco.selenium.util.Constants;
 import com.photon.phresco.selenium.util.GetCurrentDir;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
 import com.photon.phresco.selenium.util.ScreenException;
-import com.photon.phresco.uiconstants.DrupalData;
-import com.photon.phresco.uiconstants.PhrescoUiConstants;
+import com.photon.phresco.uiconstants.CommonDrupalData;
 import com.photon.phresco.uiconstants.UIConstants;
 import com.photon.phresco.uiconstants.UserInfoConstants;
-
-
 
 public class BaseScreen {
 
 	private WebDriver driver;
 	private ChromeDriverService chromeService;
-	private  Log log = LogFactory.getLog("BaseScreen");
+	private Log log = LogFactory.getLog("BaseScreen");
 	private WebElement element;
-	private DrupalData drupalConstants;
+	private CommonDrupalData commondrupalConstants;
 	private UIConstants uiConstants;
 	private UserInfoConstants userInfo;
-	private  PhrescoUiConstants phrsc;
 	DesiredCapabilities capabilities;
-	
-
 
 	public BaseScreen() {
 
 	}
-	
+
 	/**
-	 * Invoking the super class method through passing the vale of Browser,URL, Context, then PhpData,UIConstants,UserInfoConstants Xml Values
-	 * Then triggering instantiateBrowser
+	 * Invoking the super class method through passing the vale of Browser,URL,
+	 * Context, then PhpData,UIConstants,UserInfoConstants Xml Values Then
+	 * triggering instantiateBrowser
+	 * 
 	 * @throws ScreenException
 	 */
-	public BaseScreen(String selectedBrowser,String selectedPlatform, String applicationURL,
-			String applicationContext, DrupalData drupalConstants,
-			UIConstants uiConstants, UserInfoConstants userInfo) throws AWTException, IOException, ScreenActionFailedException {
+	public BaseScreen(String selectedBrowser, String selectedPlatform,
+			String applicationURL, String applicationContext,
+			CommonDrupalData commondrupalConstants, UIConstants uiConstants,
+			UserInfoConstants userInfo) throws AWTException, IOException,
+			ScreenActionFailedException {
 
-		this.drupalConstants = drupalConstants;
+		this.commondrupalConstants = commondrupalConstants;
 		this.uiConstants = uiConstants;
-		this.userInfo=userInfo;
+		this.userInfo = userInfo;
 		try {
-			instantiateBrowser(selectedBrowser,selectedPlatform, applicationURL, applicationContext);
+			instantiateBrowser(selectedBrowser, selectedPlatform,
+					applicationURL, applicationContext);
 		} catch (ScreenException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void instantiateBrowser(String selectedBrowser,String selectedPlatform,
-			String applicationURL, String applicationContext)
-					 throws ScreenException,
-						MalformedURLException {
+	public void instantiateBrowser(String selectedBrowser,
+			String selectedPlatform, String applicationURL,
+			String applicationContext) throws ScreenException,
+			MalformedURLException {
 
 		URL server = new URL("http://localhost:4444/wd/hub/");
 		if (selectedBrowser.equalsIgnoreCase(Constants.BROWSER_CHROME)) {
@@ -132,36 +127,33 @@ public class BaseScreen {
 				capabilities = new DesiredCapabilities();
 				capabilities.setJavascriptEnabled(true);
 				capabilities.setBrowserName("iexplorer");
-				} catch (Exception e) {
-					e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		}
-			else if (selectedBrowser.equalsIgnoreCase(Constants.BROWSER_OPERA)) {
-				log.info("-------------***LAUNCHING OPERA***--------------");
-				try {
-					
+		} else if (selectedBrowser.equalsIgnoreCase(Constants.BROWSER_OPERA)) {
+			log.info("-------------***LAUNCHING OPERA***--------------");
+			try {
+
 				capabilities = new DesiredCapabilities();
 				capabilities.setBrowserName("opera");
-				capabilities.setCapability("opera.autostart ",true);
+				capabilities.setCapability("opera.autostart ", true);
 
 				System.out.println("-----------checking the OPERA-------");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		
-		} 
-			else if (selectedBrowser.equalsIgnoreCase(Constants.BROWSER_SAFARI)) {
-				log.info("-------------***LAUNCHING SAFARI***--------------");
-				try {
-					
-			    capabilities = new DesiredCapabilities();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (selectedBrowser.equalsIgnoreCase(Constants.BROWSER_SAFARI)) {
+			log.info("-------------***LAUNCHING SAFARI***--------------");
+			try {
+
+				capabilities = new DesiredCapabilities();
 				capabilities.setBrowserName("safari");
 				capabilities.setCapability("safari.autostart ", true);
 				System.out.println("-----------checking the SAFARI-------");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 
 		} else if (selectedBrowser.equalsIgnoreCase(Constants.BROWSER_FIREFOX)) {
 			log.info("-------------***LAUNCHING FIREFOX***--------------");
@@ -199,7 +191,6 @@ public class BaseScreen {
 		// driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 	}
-	
 
 	public void closeBrowser() {
 		log.info("-------------***BROWSER CLOSING***--------------");
@@ -212,7 +203,7 @@ public class BaseScreen {
 		}
 	}
 
-	public  String getChromeLocation() {
+	public String getChromeLocation() {
 
 		log.info("getChromeLocation:*****CHROME TARGET LOCATION FOUND***");
 		String directory = System.getProperty("user.dir");
@@ -221,7 +212,7 @@ public class BaseScreen {
 		return location;
 	}
 
-	public  String getChromeFile() {
+	public String getChromeFile() {
 		if (System.getProperty("os.name").startsWith(Constants.WINDOWS_OS)) {
 			log.info("*******WINDOWS MACHINE FOUND*************");
 
@@ -290,14 +281,21 @@ public class BaseScreen {
 		}
 
 		catch (Exception e) {
-			/*File scrFile = ((TakesScreenshot) driver)
+			log.info("presenceOfElementLocated" + e.getMessage());
+
+			WebDriver augmentedDriver = new Augmenter().augment(driver);
+			File screenshot = ((TakesScreenshot) augmentedDriver)
 					.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(scrFile,
-					new File(GetCurrentDir.getCurrentDirectory() + "\\"
-							+ methodName + ".png"));
-			//throw new RuntimeException("waitForElementPresent"
-					//	+ super.getClass().getSimpleName() + " failed", e);
-*/			Assert.assertNull(e);
+
+			try {
+
+				FileUtils.copyFile(screenshot,
+						new File(GetCurrentDir.getCurrentDirectory() + "\\"
+								+ methodName + ".png"));
+			} catch (Exception e1) {
+				log.info("presenceOfElementLocated" + e1.getMessage());
+			}
+			Assert.assertNull(e);
 
 		}
 	}
@@ -314,418 +312,315 @@ public class BaseScreen {
 		};
 
 	}
-	
+
 	public void RegisterCheck(String methodName) throws Exception {
-			if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1]
-						.getMethodName();
-				;
-			  }
-				log.info("Entering:********Registration Check******");
-			
-			    waitForElementPresent(this.uiConstants.SIGNUPLINK,methodName);
-			    element=getXpathWebElement(this.uiConstants.SIGNUPLINK);
-			    click();
-			    Thread.sleep(3000);
-			    waitForElementPresent(this.uiConstants.USERNAME, methodName);
-			    getXpathWebElement(this.uiConstants.USERNAME);
-			    element.sendKeys(userInfo.USERNAME_VALUE);			    
-			    waitForElementPresent(this.uiConstants.EMAILFILED,methodName);
-			    getXpathWebElement(this.uiConstants.EMAILFILED);
-			    click();
-			    sendKeys(userInfo.EMAIL_VALUE);
-			    Thread.sleep(2000);
-			    waitForElementPresent(this.uiConstants.PASSWORD, methodName);
-			    getXpathWebElement(this.uiConstants.PASSWORD);
-			    element.sendKeys(userInfo.PASSWORD_VALUE);
-			    waitForElementPresent(this.uiConstants.CONFIRMPASSWORD,methodName);
-			    getXpathWebElement(this.uiConstants.CONFIRMPASSWORD);
-			    click();
-			    sendKeys(userInfo.CONFIRM_PASSWORD);
-			    Thread.sleep(2000);
-			    element=getXpathWebElement(this.uiConstants.SUBMITBUTTON);
-			    click();
-			    Thread.sleep(3000);			    
-	            waitForElementPresent(drupalConstants.TEXTREGISTRATION,methodName);
-			    isTextPresent(drupalConstants.TEXTREGISTRATION);
-			    Thread.sleep(3000);
-			    element=getXpathWebElement(this.uiConstants.LOGOFFBUTTON);
-			    click();
-	}
-	
-	
-	
-	public void loginDrupal(String methodName) throws Exception {
 		if (StringUtils.isEmpty(methodName)) {
 			methodName = Thread.currentThread().getStackTrace()[1]
 					.getMethodName();
 			;
-		
-        
-		} 
-		log.info("Entering:******Login Account******");
-		
-		element=getXpathWebElement(uiConstants.LOGIN);
-		element.click();
-		waitForElementPresent(this.uiConstants.USERNAME, methodName);
-		getXpathWebElement(this.uiConstants.USERNAME);
-		element.sendKeys(userInfo.USERNAME_VALUE);			    
-		waitForElementPresent(this.uiConstants.PASSWORDLOGIN, methodName);
-		getXpathWebElement(this.uiConstants.PASSWORDLOGIN).click();
-		element.sendKeys(userInfo.PASSWORDLOGIN_VALUE);
-		element=getXpathWebElement(this.uiConstants.SUBMITBUTTON);
-		element.click();
-		isTextPresent(drupalConstants.TEXTLOGINN);
-		element=getXpathWebElement(uiConstants.LOGOFFBUTTON);
-		element.click();
-		
-		
+		}
+		log.info("Entering:********Registration Check******");
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getSignUpLink(), methodName);
+		getXpathWebElement(this.uiConstants.getSignUpLink());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getUserName(), methodName);
+		getXpathWebElement(this.uiConstants.getUserName());
+		sendKeys(userInfo.getUserNameValue());
+		waitForElementPresent(this.uiConstants.getEmailField(), methodName);
+		getXpathWebElement(this.uiConstants.getEmailField());
+		click();
+		sendKeys(userInfo.getEmailValue());
+		Thread.sleep(2000);
+		waitForElementPresent(this.uiConstants.getPassWord(), methodName);
+		getXpathWebElement(this.uiConstants.getPassWord());
+		sendKeys(userInfo.getPasswordValue());
+		waitForElementPresent(this.uiConstants.getConfirmPassword(), methodName);
+		getXpathWebElement(this.uiConstants.getConfirmPassword());
+		click();
+		sendKeys(userInfo.getConfirmPassWord());
+		Thread.sleep(2000);
+		getXpathWebElement(this.uiConstants.getSubmitButton());
+		click();
+		Thread.sleep(15000);
+		logOff(methodName);
+
 	}
-	
-	
+
 	public void RequestNewPassword(String methodName) throws Exception {
 		if (StringUtils.isEmpty(methodName)) {
 			methodName = Thread.currentThread().getStackTrace()[1]
 					.getMethodName();
 			;
-		  }
-		    log.info("Entering:******RequestNewPassword********");
-		    
-		    element=getXpathWebElement(uiConstants.LOGIN);
-			element.click();
-		    waitForElementPresent(this.uiConstants.REQUESTLINK,methodName);
-		    getXpathWebElement(this.uiConstants.REQUESTLINK);
-		    click();
-		    Thread.sleep(2000);
-		    waitForElementPresent(this.uiConstants.EMAILTEXTFIELD,methodName);
-		    getXpathWebElement(this.uiConstants.EMAILTEXTFIELD);
-		    click();
-		    sendKeys(userInfo.EMAIL_VALUE);
-		    Thread.sleep(2000);
-		    element=getXpathWebElement(this.uiConstants.REQUESTBUTTON);
-		    click();
-		    Thread.sleep(5000);
-		    isTextPresent(drupalConstants.TEXTREQUESTNEWPWD);
-		    
-		    
-	}
-	
-	
-
-	
-	public void categorySelect(String methodName) throws Exception {
-		if (StringUtils.isEmpty(methodName)) {
-			methodName = Thread.currentThread().getStackTrace()[1]
-					.getMethodName();
-			;
-		
-        
-		} 
-		log.info("Entering:******Category Select*********");
-		
-		element=getXpathWebElement(uiConstants.LOGIN);
-		element.click();
-		waitForElementPresent(this.uiConstants.USERNAME, methodName);
-		getXpathWebElement(this.uiConstants.USERNAME);
-		element.sendKeys(userInfo.USERNAME_VALUE);			    
-		waitForElementPresent(this.uiConstants.PASSWORDLOGIN, methodName);
-		getXpathWebElement(this.uiConstants.PASSWORDLOGIN).click();
-		element.sendKeys(userInfo.PASSWORDLOGIN_VALUE);
-		element=getXpathWebElement(this.uiConstants.SUBMITBUTTON);
-		element.click();			
-	    element=getXpathWebElement(this.uiConstants.ACCESSORIES);
-	    element.click();	    
-	    element=getXpathWebElement(this.uiConstants.ADDTOCART1);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTACCESSORIES);
-	    waitForElementPresent(this.uiConstants.QUANTITY1, methodName);
-	    getXpathWebElement(this.uiConstants.QUANTITY1);
-	    clear();
-	    element.sendKeys(drupalConstants.QUANTITY1_VALUE);
-	    element=getXpathWebElement(this.uiConstants.UPDATECART1);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTUPDATE);	    
-	    element=getXpathWebElement(this.uiConstants.AUDIODEVICE);
-	    element.click();
-	    element=getXpathWebElement(this.uiConstants.ADDTOCART2);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTAUDIODEVICES);
-	    element=getXpathWebElement(this.uiConstants.UPDATECART2);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTUPDATE);  
-	    element=getXpathWebElement(this.uiConstants.CAMERAS);
-	    element.click();
-	    element=getXpathWebElement(this.uiConstants.ADDTOCART3);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTCAMERAS);
-	    element=getXpathWebElement(this.uiConstants.UPDATECART3);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTUPDATE);
-	    element=getXpathWebElement(this.uiConstants.COMPUTERS);
-	    element.click();
-	    element=getXpathWebElement(this.uiConstants.ADDTOCART4);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTCOMPUTERS);
-	    element=getXpathWebElement(this.uiConstants.UPDATECART4);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTUPDATE); 
-	    element=getXpathWebElement(this.uiConstants.MOBILEPHONES);
-	    element.click();
-	    element=getXpathWebElement(this.uiConstants.ADDTOCART5);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTMOBILEPHONES);
-	    element=getXpathWebElement(this.uiConstants.REMOVE);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTREMOVE);
-	    element=getXpathWebElement(this.uiConstants.REMOVE1);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTREMOVE);
-	    element=getXpathWebElement(this.uiConstants.UPDATECART5);
-	    element.click();
-	    isTextPresent(drupalConstants.TEXTUPDATE);
-	    
-
-	    
-	}
-	
-	public void CategorySelectLast(String methodName) throws Exception {
-		if (StringUtils.isEmpty(methodName)) {
-			methodName = Thread.currentThread().getStackTrace()[1]
-					.getMethodName();
-			;
-		
-        
-		} 
-		log.info("Entering:******Category SelectLast*********");
-		
-		waitForElementPresent(uiConstants.MOVIEANDMUSIC,methodName);
-   	 	getXpathWebElement(uiConstants.MOVIEANDMUSIC);
-		element.click();
-		getXpathWebElement(uiConstants.ADDTOCART6);
-		element.click();	
-		isTextPresent(drupalConstants.TEXTMOVIES);
-		waitForElementPresent(uiConstants.MP3PLAYER,methodName);
-    	getXpathWebElement(uiConstants.MP3PLAYER);
-		element.click();
-    	getXpathWebElement(uiConstants.ADDTOCART7);
-		element.click();
-		isTextPresent(drupalConstants.TEXTMP3);
-		waitForElementPresent(uiConstants.TABLETS,methodName);
-   	 	getXpathWebElement(uiConstants.TABLETS);
-		element.click();
-		Thread.sleep(5000);
-   	 	getXpathWebElement(uiConstants.ADDTOCART8);
-		element.click();
-		isTextPresent(drupalConstants.TEXTTABLETS);
-		Thread.sleep(5000);
-		waitForElementPresent(uiConstants.TELEVISION,methodName);
-    	getXpathWebElement(uiConstants.TELEVISION);
-		element.click();
-		Thread.sleep(5000);
-    	getXpathWebElement(uiConstants.ADDTOCART9);
-		element.click();
-		isTextPresent(drupalConstants.TEXTTELEVISION);
-		getXpathWebElement(uiConstants.UPDATECART1);
-		element.click();
-		isTextPresent(drupalConstants.TEXTUPDATE);
-		waitForElementPresent(uiConstants.VIDEOGAMES,methodName);
-    	getXpathWebElement(uiConstants.VIDEOGAMES);
-		element.click();
-    	getXpathWebElement(uiConstants.ADDTOCART10);
-		element.click();
-		isTextPresent(drupalConstants.TEXTVIDEOGAMES);
-		element=getXpathWebElement(this.uiConstants.CHECKOUT);
-	    element.click();
-	    Thread.sleep(5000);
-	    
-		
-	}
-	    
-	    public void checkoutCategory(String methodName) throws Exception {
-
-			if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1]
-						.getMethodName();
-				;
-			}
-			log.info("Entering:******Checkout Category*********");
-			
-			element=getXpathWebElement(this.uiConstants.BILLINGADDCHECK);
-		    element.click();
-		    Thread.sleep(8000);
-			waitForElementPresent(this.uiConstants.FIRSTNAME, methodName);
-		    getXpathWebElement(this.uiConstants.FIRSTNAME);
-		    element.sendKeys(drupalConstants.FIRSTNAME_VALUE);
-		    waitForElementPresent(this.uiConstants.LASTNAME, methodName);
-		    getXpathWebElement(this.uiConstants.LASTNAME);
-		    element.sendKeys(drupalConstants.LASTNAME_VALUE);
-		    waitForElementPresent(this.uiConstants.COMPANY, methodName);
-		    getXpathWebElement(this.uiConstants.COMPANY);
-		    element.sendKeys(drupalConstants.COMPANY_VALUE);
-		    waitForElementPresent(this.uiConstants.STREETADDRESS1, methodName);
-		    getXpathWebElement(this.uiConstants.STREETADDRESS1);
-		    element.sendKeys(drupalConstants.STRRETADDRESS1_VALUE);
-		    waitForElementPresent(this.uiConstants.STREETADDRESS2, methodName);
-		    getXpathWebElement(this.uiConstants.STREETADDRESS2);
-		    element.sendKeys(drupalConstants.STREETADDRESS2_VALUE);
-		    waitForElementPresent(this.uiConstants.CITY, methodName);
-		    getXpathWebElement(this.uiConstants.CITY);
-		    element.sendKeys(drupalConstants.CITY_VALUE);
-		    waitForElementPresent(this.uiConstants.POSTELCODE, methodName);
-		    getXpathWebElement(this.uiConstants.POSTELCODE);
-		    element.sendKeys(drupalConstants.POSTELCODE_VALUE);
-		    selectValue(drupalConstants.COUNTRY_VALUE);
-		    Thread.sleep(12000);
-		    selectValue(drupalConstants.STATE_VALUE);
-		    waitForElementPresent(this.uiConstants.ORDERCOMM, methodName);
-		    getXpathWebElement(this.uiConstants.ORDERCOMM);
-		    element.sendKeys(drupalConstants.ORDERCOMM_VALUE);
-		    element=getXpathWebElement(this.uiConstants.REVIEWORDER);
-		    element.click();
-		    element=getXpathWebElement(this.uiConstants.CHECKOUTSUBMIT);
-		    element.click();
-		    Thread.sleep(5000);
-		    isTextPresent(drupalConstants.TEXTORDER);
-		  
-			
-			
-	    }
-	    
-	    public void homeSpecialTab(String methodName) throws Exception {
-
-			if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1]
-						.getMethodName();
-				;
-			}
-			log.info("Entering:******Special Tab*********");
-			
-			element=getXpathWebElement(this.uiConstants.HOME);
-		    element.click();
-		    element=getXpathWebElement(this.uiConstants.NEXT);
-		    element.click();
-		    element=getXpathWebElement(this.uiConstants.NEXT);
-		    element.click();
-		    element=getXpathWebElement(this.uiConstants.SELECT);
-		    element.click();
-		    isTextPresent(drupalConstants.TEXTHOMESELECT);
-		    element=getXpathWebElement(this.uiConstants.UPDATESELECT);
-		    element.click();
-		    isTextPresent(drupalConstants.TEXTUPDATE);
-	
-			
-			
-	    }
-	    
-	    public void homeShoppingCart(String methodName) throws Exception {
-
-			if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1]
-						.getMethodName();
-				;
-			}
-			log.info("Entering:******Shopping Cart*********");
-			
-			element=getXpathWebElement(this.uiConstants.SHOPPING);
-		    element.click();
-		    element=getXpathWebElement(this.uiConstants.REMOVECART);
-		    element.click();
-		    isTextPresent(drupalConstants.TEXTREMOVE);
-		    element=getXpathWebElement(this.uiConstants.HOME);
-		    element.click();
-		    Thread.sleep(5000);
-		    /*element=getXpathWebElement(this.uiConstants.LOGOUT);
-		    element.click();
-			*/
-			
-			
-	    }
-	    
-	    public  void aboutUs(String methodName)throws Exception {
-	    	if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1].getMethodName();;
-			}
-	    	log.info("Entering:******About Us*********");
-	    	
-	    	waitForElementPresent(uiConstants.ABOUTUS,methodName);
-	    	getXpathWebElement(uiConstants.ABOUTUS);
-			element.click();
-			Thread.sleep(5000);
-			isTextPresent(drupalConstants.ABOUTUS_VALUE);
-			Thread.sleep(5000);
-	    	
-			}
-	    
-	    public void contactUs(String methodName)throws Exception {
-	    	if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1].getMethodName();;
-			}
-	    	log.info("Entering:******Contact US*********");
-	    	
-	    	waitForElementPresent(uiConstants.CONTACTUS,methodName);
-	    	getXpathWebElement(uiConstants.CONTACTUS);
-			element.click();
-			Thread.sleep(5000);
-			isTextPresent(drupalConstants.TEXTCONTACTUS);
-			Thread.sleep(5000);
-			isTextPresent(drupalConstants.TEXTCONTACTUS1);
-			
-	    }
-	    
-	    public void searchProducts(String methodName)throws Exception {
-	    	if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1].getMethodName();;
-			}
-	    	log.info("Entering:******Search Products*********");
-	    	
-	    	waitForElementPresent(this.uiConstants.SEARCHPRODUCTS,methodName);
-			getXpathWebElement(this.uiConstants.SEARCHPRODUCTS);
-			sendKeys(drupalConstants.SEARCHPRODUCTS);
-			Thread.sleep(5000);
-			waitForElementPresent(uiConstants.SEARCH,methodName);
-		    getXpathWebElement(uiConstants.SEARCH);
-			element.click();
-			Thread.sleep(5000);
-	    }
-	    
-	    
-	   
-	    public void logOff(String methodName) throws Exception {
-
-			if (StringUtils.isEmpty(methodName)) {
-				methodName = Thread.currentThread().getStackTrace()[1]
-						.getMethodName();
-				;
-			}
-			log.info("Entering:******LogOff*********");
-			
-			element=getXpathWebElement(this.uiConstants.LOGOFFBUTTON);
-			element.click();
-			Thread.sleep(5000);
-	    }
-	  
-	  /*  public void scrollDownUP()
-	    {
-	    	try{
-	    	driver.findElement(By.id("© Photon Infotech 2012")).sendKeys(Keys.END);
-	    	Thread.sleep(5000);
-	    	driver.findElement(By.id("© Photon Infotech 2012")).sendKeys(Keys.UP);
-	    	}catch (Throwable t) {
-				t.printStackTrace();
-			}
-
-	    }
-	    */
-	    
-	    public void selectValue(String valToBeSelected){
-	    	List <WebElement> options = driver.findElements(By.tagName("option"));
-			for (WebElement option : options) {
-				if (valToBeSelected.equalsIgnoreCase(option.getText())){
-					option.click();
-				}
-			    }
 		}
-	
+		log.info("Entering:******RequestNewPassword********");
+
+		getXpathWebElement(uiConstants.getLogin());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getRequestLink(), methodName);
+		getXpathWebElement(this.uiConstants.getRequestLink());
+		click();
+		Thread.sleep(2000);
+		waitForElementPresent(this.uiConstants.getEmailTextField(), methodName);
+		getXpathWebElement(this.uiConstants.getEmailTextField());
+		click();
+		sendKeys(userInfo.getEmailValue());
+		Thread.sleep(2000);
+		getXpathWebElement(this.uiConstants.getRequestButton());
+		click();
+		Thread.sleep(5000);
+
+	}
+
+	public void billInfo(String methodName, DrupalEshopData drupalData)
+			throws Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+
+		}
+		log.info("Entering:******Category Select*********");
+		Thread.sleep(5000);
+		waitForElementPresent(uiConstants.getLogin(), methodName);
+		getXpathWebElement(uiConstants.getLogin());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getUserName(), methodName);
+		getXpathWebElement(this.uiConstants.getUserName());
+		click();
+		sendKeys(userInfo.getUserNameValue());
+		waitForElementPresent(this.uiConstants.getPassWordLogin(), methodName);
+		getXpathWebElement(this.uiConstants.getPassWordLogin()).click();
+		sendKeys(userInfo.getPasswordLoginValue());
+		waitForElementPresent(this.uiConstants.getSubmitButton(), methodName);
+		getXpathWebElement(this.uiConstants.getSubmitButton());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(uiConstants.getMovieAndMusics(), methodName);
+		getXpathWebElement(uiConstants.getMovieAndMusics());
+		click();
+		getXpathWebElement(uiConstants.getAddtoCart6());
+		click();
+		waitForElementPresent("//input[@id='edit-checkout']", methodName);
+		getXpathWebElement("//input[@id='edit-checkout']");
+		click();
+		Thread.sleep(5000);
+
+	}
+
+	public void billInfo1(String methodName, DrupalEshopData drupalData)
+			throws Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+
+		}
+
+		Thread.sleep(3000);
+		waitForElementPresent(uiConstants.getLogin(), methodName);
+		getXpathWebElement(uiConstants.getLogin());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getUserName(), methodName);
+		getXpathWebElement(this.uiConstants.getUserName());
+		click();
+		sendKeys(userInfo.getUserNameValue());
+		waitForElementPresent(this.uiConstants.getPassWordLogin(), methodName);
+		getXpathWebElement(this.uiConstants.getPassWordLogin()).click();
+		sendKeys(userInfo.getPasswordLoginValue());
+		waitForElementPresent(this.uiConstants.getSubmitButton(), methodName);
+		getXpathWebElement(this.uiConstants.getSubmitButton());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(uiConstants.getMp3Player(), methodName);
+		getXpathWebElement(uiConstants.getMp3Player());
+		click();
+		getXpathWebElement(uiConstants.getAddtoCart7());
+		click();
+		waitForElementPresent(this.uiConstants.getCheckOutBtn(), methodName);
+		getXpathWebElement(this.uiConstants.getCheckOutBtn());
+		click();
+		Thread.sleep(5000);
+
+	}
+
+	public void checkoutCategory(String methodName, DrupalEshopData drupalData)
+			throws Exception {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		log.info("Entering:******Checkout Category*********");
+
+		Thread.sleep(3000);
+		waitForElementPresent(this.uiConstants.getFirstName(), methodName);
+		getXpathWebElement(this.uiConstants.getFirstName());
+		sendKeys(drupalData.getFirstnamevalue());
+		waitForElementPresent(this.uiConstants.getLastName(), methodName);
+		getXpathWebElement(this.uiConstants.getLastName());
+		sendKeys(drupalData.getLastnamevalue());
+		waitForElementPresent(this.uiConstants.getCompany(), methodName);
+		getXpathWebElement(this.uiConstants.getCompany());
+		sendKeys(drupalData.getCompanyvalue());
+		waitForElementPresent(this.uiConstants.getStreetAddress1(), methodName);
+		getXpathWebElement(this.uiConstants.getStreetAddress1());
+		sendKeys(drupalData.getStreetaddress1());
+		waitForElementPresent(this.uiConstants.getStreetAddress2(), methodName);
+		getXpathWebElement(this.uiConstants.getStreetAddress2());
+		sendKeys(drupalData.getStreetaddress2());
+		waitForElementPresent(this.uiConstants.getCity(), methodName);
+		getXpathWebElement(this.uiConstants.getCity());
+		sendKeys(drupalData.getCityvalue());
+		Thread.sleep(2000);
+		waitForElementPresent(this.uiConstants.getBillInfoStateXpath(),
+				methodName);
+		getXpathWebElement(this.uiConstants.getBillInfoStateXpath());
+		sendKeys(drupalData.getStatevalue());
+		Thread.sleep(2000);
+		waitForElementPresent(this.uiConstants.getPostelCode(), methodName);
+		getXpathWebElement(this.uiConstants.getPostelCode());
+		sendKeys(drupalData.getPostelcodecvalue());
+
+		Thread.sleep(2000);
+		waitForElementPresent(this.uiConstants.getBillInfoCheckBox(),
+				methodName);
+		getXpathWebElement(this.uiConstants.getBillInfoCheckBox());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getOrderComm(), methodName);
+		getXpathWebElement(this.uiConstants.getOrderComm());
+		sendKeys(drupalData.getOrdercommvalue());
+		getXpathWebElement(this.uiConstants.getReviewOrder());
+		click();
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getCheckOutSubmit(), methodName);
+		getXpathWebElement(this.uiConstants.getCheckOutSubmit());
+		click();
+		Thread.sleep(10000);
+		getXpathWebElement(this.uiConstants.getLogoButton());
+		click();
+		Thread.sleep(10000);
+
+	}
+
+	public void homeSpecialTab(String methodName) throws Exception {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		log.info("Entering:******Special Tab*********");
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getHome(), methodName);
+		getXpathWebElement(this.uiConstants.getHome());
+		click();
+		Thread.sleep(5000);
+
+	}
+
+	public void homeShoppingCart(String methodName) throws Exception {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		log.info("Entering:******Shopping Cart*********");
+		Thread.sleep(7000);
+		waitForElementPresent(this.uiConstants.getShopping(), methodName);
+		getXpathWebElement(this.uiConstants.getShopping());
+		click();
+		Thread.sleep(5000);
+
+	}
+
+	public void aboutUs(String methodName) throws Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		log.info("Entering:******About Us*********");
+		Thread.sleep(5000);
+		waitForElementPresent(uiConstants.getAboutus(), methodName);
+		waitForElementPresent(uiConstants.getAboutus(), methodName);
+		getXpathWebElement(uiConstants.getAboutus());
+		click();
+		Thread.sleep(5000);
+
+	}
+
+	public void contactUs(String methodName) throws Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		log.info("Entering:******Contact US*********");
+		Thread.sleep(5000);
+		waitForElementPresent(uiConstants.getContactus(), methodName);
+		getXpathWebElement(uiConstants.getContactus());
+		click();
+		Thread.sleep(5000);
+	}
+
+	public void searchProducts(String methodName) throws Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		log.info("Entering:******Search Products*********");
+		Thread.sleep(5000);
+		waitForElementPresent(this.uiConstants.getSearchProducts(), methodName);
+		getXpathWebElement(this.uiConstants.getSearchProducts());
+		sendKeys(commondrupalConstants.getSearchProducts());
+		Thread.sleep(5000);
+		waitForElementPresent(uiConstants.getSearch(), methodName);
+		getXpathWebElement(uiConstants.getSearch());
+		click();
+		Thread.sleep(5000);
+	}
+
+	public void logOff(String methodName) throws Exception {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		log.info("Entering:******LogOff*********");
+		Thread.sleep(7000);
+		getXpathWebElement(this.uiConstants.getLogoButton());
+		click();
+		Thread.sleep(10000);
+	}
+
+	/*
+	 * public void scrollDownUP() { try{
+	 * driver.findElement(By.id("© Photon Infotech 2012")).sendKeys(Keys.END);
+	 * Thread.sleep(5000);
+	 * driver.findElement(By.id("© Photon Infotech 2012")).sendKeys(Keys.UP);
+	 * }catch (Throwable t) { t.printStackTrace(); }
+	 * 
+	 * }
+	 */
+
+	public void selectValue(String valToBeSelected) {
+		List<WebElement> options = driver.findElements(By.tagName("option"));
+		for (WebElement option : options) {
+			if (valToBeSelected.equalsIgnoreCase(option.getText())) {
+				option.click();
+			}
+		}
+	}
 
 	public void click() throws ScreenException {
 		log.info("Entering:********click operation start********");
@@ -772,20 +667,20 @@ public class BaseScreen {
 
 	}
 
-	/*public void isTextPresent(String textValue) {
-		
-		if (textValue != null) {
-			Boolean textCheck = driver.getPageSource().contains(textValue);
-			
-			System.out.println("-----TextCheck value-->"+textCheck);
-			//Assert.assertTrue(textCheck);
-			Assert.assertTrue("Text present", textCheck);
-		} else {
-
-			throw new RuntimeException("---- Text not existed----");
-			
-		}
-	}*/
+	/*
+	 * public void isTextPresent(String textValue) {
+	 * 
+	 * if (textValue != null) { Boolean textCheck =
+	 * driver.getPageSource().contains(textValue);
+	 * 
+	 * System.out.println("-----TextCheck value-->"+textCheck);
+	 * //Assert.assertTrue(textCheck); Assert.assertTrue("Text present",
+	 * textCheck); } else {
+	 * 
+	 * throw new RuntimeException("---- Text not existed----");
+	 * 
+	 * } }
+	 */
 
 	public void isElementPresent(String element) throws Exception {
 
@@ -800,27 +695,21 @@ public class BaseScreen {
 		}
 
 	}
+
 	/**
-	 *  
+	 * 
 	 * @param text
 	 */
 	public void isTextPresent(String text) {
-		if (text!= null){
-		boolean value=driver.findElement(By.tagName("body")).getText().contains(text);	
-		Assert.assertTrue(value);   
-	    
-	    }
-		else
-		{
+		if (text != null) {
+			boolean value = driver.findElement(By.tagName("body")).getText()
+					.contains(text);
+			Assert.assertTrue(value);
+
+		} else {
 			throw new RuntimeException("---- Text not existed----");
 		}
-	    
-	    
-	    
-	}	
-	
-	
 
+	}
 
 }
-
