@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mojos>
     <mojo>
-        <goal>performance-test</goal>
-        <description>Goal which execute the jMeter performance test</description>
+        <goal>load-test</goal>
+        <description>Goal which load Test to the DotNet project</description>
         <requiresDirectInvocation>false</requiresDirectInvocation>
         <requiresProject>true</requiresProject>
         <requiresReports>false</requiresReports>
@@ -25,7 +25,7 @@
                     <description></description>
                     <key>testBasis</key>
                     <possibleValues>
-                        <value key="parameters" dependency="testAgainst,showSettings,environmentName,configurations,testName,rampUpPeriod,authManager,contextUrls,dbContextUrls">Parameters</value>
+                        <value key="parameters" dependency="testAgainst,showSettings,environmentName,configurations,testName,noOfUsers,loopCount,rampUpPeriod,authManager,loadContextUrl">Parameters</value>
                         <value key="customise" dependency="customTestAgainst,uploadJMX,availableJmx">Custom</value>
                     </possibleValues>
                     <multiple>false</multiple>
@@ -38,14 +38,13 @@
                         <value lang="en">Test Against</value>
                     </name>
                     <type>List</type>
-                    <required>true</required>
+                    <required>false</required>
                     <editable>true</editable>
                     <description></description>
                     <key>testAgainst</key>
                     <possibleValues>
-                        <value key="server" dependency="contextUrls">Server</value>
-                        <value key="webservice" dependency="contextUrls">Web Services</value>
-                        <value key="database" dependency="dbContextUrls">Database</value>
+                        <value key="server" dependency="loadContextUrl">Server</value>
+                        <value key="webservice" dependency="loadContextUrl">Web Services</value>
                     </possibleValues>
                     <multiple>false</multiple>
                     <value>server</value>
@@ -65,7 +64,6 @@
                     <possibleValues>
                         <value key="server">Server</value>
                         <value key="webservice">Web Services</value>
-                        <value key="database">Database</value>
                     </possibleValues>
                     <multiple>false</multiple>
                     <value>server</value>
@@ -100,7 +98,7 @@
 <groupId>com.photon.phresco.commons</groupId>
 <artifactId>phresco-commons</artifactId>
 <type>jar</type>
-<version>2.3.1.6001-SNAPSHOT</version>
+<version>2.3.0.9000</version>
                             </dependency>
                         </dependencies>
                     </dynamicParameter>
@@ -125,16 +123,16 @@
 <groupId>com.photon.phresco.framework</groupId>
 <artifactId>phresco-framework-impl</artifactId>
 <type>jar</type>
-<version>2.3.1.6001-SNAPSHOT</version>
+<version>2.3.0.9000</version>
                             </dependency>
                         </dependencies>
                     </dynamicParameter>
-                    <required>false</required>
+                    <required>true</required>
                     <editable>true</editable>
                     <description></description>
                     <key>configurations</key>
                     <multiple>false</multiple>
-                    <value>server</value>
+                    <value>Serverconfiguration</value>
                     <sort>false</sort>
                     <show>true</show>
                 </parameter>
@@ -150,7 +148,7 @@
 <groupId>com.photon.phresco.framework</groupId>
 <artifactId>phresco-framework-impl</artifactId>
 <type>jar</type>
-<version>2.3.1.6001-SNAPSHOT</version>
+<version>2.3.0.9000</version>
                             </dependency>
                         </dependencies>
                     </dynamicParameter>
@@ -159,9 +157,23 @@
                     <description></description>
                     <key>testName</key>
                     <multiple>false</multiple>
-                    <value>test			</value>
+                    <value>Drupal7Eshop-Load</value>
                     <sort>false</sort>
                     <show>false</show>
+                </parameter>
+                <parameter>
+                    <name>
+                        <value lang="en">No Of Users</value>
+                    </name>
+                    <type>Number</type>
+                    <required>true</required>
+                    <editable>true</editable>
+                    <description></description>
+                    <key>noOfUsers</key>
+                    <multiple>false</multiple>
+                    <value>10</value>
+                    <sort>false</sort>
+                    <show>true</show>
                 </parameter>
                 <parameter>
                     <name>
@@ -172,6 +184,20 @@
                     <editable>true</editable>
                     <description></description>
                     <key>rampUpPeriod</key>
+                    <multiple>false</multiple>
+                    <value>10</value>
+                    <sort>false</sort>
+                    <show>true</show>
+                </parameter>
+                <parameter>
+                    <name>
+                        <value lang="en">Loop Count</value>
+                    </name>
+                    <type>Number</type>
+                    <required>true</required>
+                    <editable>true</editable>
+                    <description></description>
+                    <key>loopCount</key>
                     <multiple>false</multiple>
                     <value>10</value>
                     <sort>false</sort>
@@ -268,45 +294,20 @@
                     </name>
                     <type>DynamicPageParameter</type>
                     <dynamicParameter>
-                        <class>com.photon.phresco.framework.param.impl.PerformanceTestDetailsImpl</class>
+                        <class>com.photon.phresco.framework.param.impl.LoadTestDetailsImpl</class>
                         <dependencies>
                             <dependency>
 <groupId>com.photon.phresco.framework</groupId>
 <artifactId>phresco-framework-impl</artifactId>
 <type>jar</type>
-<version>2.3.1.6001-SNAPSHOT</version>
+<version>2.3.0.9000</version>
                             </dependency>
                         </dependencies>
                     </dynamicParameter>
                     <required>false</required>
                     <editable>true</editable>
                     <description></description>
-                    <key>contextUrls</key>
-                    <multiple>false</multiple>
-                    <value></value>
-                    <sort>false</sort>
-                    <show>false</show>
-                </parameter>
-                <parameter>
-                    <name>
-                        <value lang="en">DB Context URLs</value>
-                    </name>
-                    <type>DynamicPageParameter</type>
-                    <dynamicParameter>
-                        <class>com.photon.phresco.framework.param.impl.PerformanceTestDetailsImpl</class>
-                        <dependencies>
-                            <dependency>
-<groupId>com.photon.phresco.framework</groupId>
-<artifactId>phresco-framework-impl</artifactId>
-<type>jar</type>
-<version>2.3.1.6001-SNAPSHOT</version>
-                            </dependency>
-                        </dependencies>
-                    </dynamicParameter>
-                    <required>false</required>
-                    <editable>true</editable>
-                    <description></description>
-                    <key>dbContextUrls</key>
+                    <key>loadContextUrl</key>
                     <multiple>false</multiple>
                     <value></value>
                     <sort>false</sort>
@@ -340,7 +341,7 @@
 <groupId>com.photon.phresco.commons</groupId>
 <artifactId>phresco-commons</artifactId>
 <type>jar</type>
-<version>2.3.1.6001-SNAPSHOT</version>
+<version>2.3.0.9000</version>
                             </dependency>
                         </dependencies>
                     </dynamicParameter>
