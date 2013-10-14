@@ -1,5 +1,5 @@
-
-<?php /*
+<?php
+ /*
  * PHR_DrupalEshop
  *
  * Copyright (C) 1999-2013 Photon Infotech Inc.
