@@ -94,7 +94,7 @@
                     <description></description>
                     <key>testName</key>
                     <multiple>false</multiple>
-                    <value>Drupal7Eshop-DB</value>
+                    <value>Drupal7</value>
                     <sort>false</sort>
                     <show>false</show>
                 </parameter>
